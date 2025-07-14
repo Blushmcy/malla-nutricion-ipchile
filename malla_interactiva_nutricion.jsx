@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Curricular Nutrición y Dietética - IPCHILE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    input[type="checkbox"]:disabled + label {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular Nutrición y Dietética - IPCHILE</h1>
+  <div class="grid" id="malla">
+    <!-- Nivel 1 -->
+    <div class="card" data-semestre="1">
+      <h2>Nivel 1</h2>
+      <ul>
+        <li><input type="checkbox" id="s1r1"><label for="s1r1"> Anatomofisiología</label></li>
+        <li><input type="checkbox" id="s1r2"><label for="s1r2"> Biología Celular y Molecular</label></li>
+        <li><input type="checkbox" id="s1r3"><label for="s1r3"> Comunicación Oral y Escrita</label></li>
+        <li><input type="checkbox" id="s1r4"><label for="s1r4"> Introducción a la Nutrición</label></li>
+        <li><input type="checkbox" id="s1r5"><label for="s1r5"> Química</label></li>
+        <li><input type="checkbox" id="s1r6"><label for="s1r6"> Razonamiento Lógico y Matemático</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 2 -->
+    <div class="card" data-semestre="2">
+      <h2>Nivel 2</h2>
+      <ul>
+        <li><input type="checkbox" id="s2r1" disabled><label for="s2r1"> Bioquímica</label></li>
+        <li><input type="checkbox" id="s2r2" disabled><label for="s2r2"> Ciencia de los Alimentos I</label></li>
+        <li><input type="checkbox" id="s2r3" disabled><label for="s2r3"> Fisiología en el Ciclo Vital</label></li>
+        <li><input type="checkbox" id="s2r4" disabled><label for="s2r4"> Inglés I</label></li>
+        <li><input type="checkbox" id="s2r5" disabled><label for="s2r5"> Microbiología e Higiene de los Alimentos</label></li>
+        <li><input type="checkbox" id="s2r6" disabled><label for="s2r6"> Primeros Auxilios</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 3 -->
+    <div class="card" data-semestre="3">
+      <h2>Nivel 3</h2>
+      <ul>
+        <li><input type="checkbox" id="s3r1" disabled><label for="s3r1"> Bioestadística</label></li>
+        <li><input type="checkbox" id="s3r2" disabled><label for="s3r2"> Ciencia de los Alimentos II</label></li>
+        <li><input type="checkbox" id="s3r3" disabled><label for="s3r3"> Fisiopatología en el Ciclo Vital</label></li>
+        <li><input type="checkbox" id="s3r4" disabled><label for="s3r4"> Inglés II</label></li>
+        <li><input type="checkbox" id="s3r5" disabled><label for="s3r5"> Nutrición Básica I</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 4 -->
+    <div class="card" data-semestre="4">
+      <h2>Nivel 4</h2>
+      <ul>
+        <li><input type="checkbox" id="s4r1" disabled><label for="s4r1"> Bromatología y Análisis Sensorial</label></li>
+        <li><input type="checkbox" id="s4r2" disabled><label for="s4r2"> Evaluación del Estado Nutricional</label></li>
+        <li><input type="checkbox" id="s4r3" disabled><label for="s4r3"> Farmacología</label></li>
+        <li><input type="checkbox" id="s4r4" disabled><label for="s4r4"> Nutrición Básica II</label></li>
+        <li><input type="checkbox" id="s4r5" disabled><label for="s4r5"> Salud Pública y Epidemiología</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 5 -->
+    <div class="card" data-semestre="5">
+      <h2>Nivel 5</h2>
+      <ul>
+        <li><input type="checkbox" id="s5r1" disabled><label for="s5r1"> Estructura y Función Gastronómica</label></li>
+        <li><input type="checkbox" id="s5r2" disabled><label for="s5r2"> Dietoterapia en el Ciclo Vital I</label></li>
+        <li><input type="checkbox" id="s5r3" disabled><label for="s5r3"> Psicología para el Ciclo Vital</label></li>
+        <li><input type="checkbox" id="s5r4" disabled><label for="s5r4"> Educación, Sociología y Conducción</label></li>
+        <li><input type="checkbox" id="s5r5" disabled><label for="s5r5"> Higiene y Legislación Sanitaria en Servicios de Alimentación</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 6 -->
+    <div class="card" data-semestre="6">
+      <h2>Nivel 6</h2>
+      <ul>
+        <li><input type="checkbox" id="s6r1" disabled><label for="s6r1"> Bioética Profesional</label></li>
+        <li><input type="checkbox" id="s6r2" disabled><label for="s6r2"> Dietoterapia en el Ciclo Vital II</label></li>
+        <li><input type="checkbox" id="s6r3" disabled><label for="s6r3"> Gestión en Nutrición Clínica</label></li>
+        <li><input type="checkbox" id="s6r4" disabled><label for="s6r4"> Metabolismo y Actividad Física</label></li>
+        <li><input type="checkbox" id="s6r5" disabled><label for="s6r5"> Nutrición Ortomolecular</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 7 -->
+    <div class="card" data-semestre="7">
+      <h2>Nivel 7</h2>
+      <ul>
+        <li><input type="checkbox" id="s7r1" disabled><label for="s7r1"> Administración y Gestión de Servicios de Alimentación</label></li>
+        <li><input type="checkbox" id="s7r2" disabled><label for="s7r2"> Dietoterapia en el Ciclo Vital III</label></li>
+        <li><input type="checkbox" id="s7r3" disabled><label for="s7r3"> Evaluación de Proyectos</label></li>
+        <li><input type="checkbox" id="s7r4" disabled><label for="s7r4"> Nutrición Comunitaria</label></li>
+        <li><input type="checkbox" id="s7r5" disabled><label for="s7r5"> Terapias Complementarias</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 8 -->
+    <div class="card" data-semestre="8">
+      <h2>Nivel 8</h2>
+      <ul>
+        <li><input type="checkbox" id="s8r1" disabled><label for="s8r1"> Evaluación de Proyectos y Planificación</label></li>
+        <li><input type="checkbox" id="s8r2" disabled><label for="s8r2"> Investigación en Nutrición</label></li>
+        <li><input type="checkbox" id="s8r3" disabled><label for="s8r3"> Módulo Integrativo en Nutrición Clínica</label></li>
+        <li><input type="checkbox" id="s8r4" disabled><label for="s8r4"> Módulo Integrativo en Nutrición Comunitaria</label></li>
+        <li><input type="checkbox" id="s8r5" disabled><label for="s8r5"> Módulo Integrativo en Servicios de Alimentación</label></li>
+      </ul>
+    </div>
+
+    <!-- Nivel 9 -->
+    <div class="card" data-semestre="9">
+      <h2>Nivel 9</h2>
+      <ul>
+        <li><input type="checkbox" id="s9r1" disabled><label for="s9r1"> Internado Profesional</label></li>
+        <li><input type="checkbox" id="s9r2" disabled><label for="s9r2"> Proyecto de Título</label></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const semestres = document.querySelectorAll('[data-semestre]');
+
+    function verificarSemestre(semIndex) {
+      const semestre = semestres[semIndex];
+      const checks = semestre.querySelectorAll('input[type="checkbox"]');
+      return Array.from(checks).every(input => input.checked);
+    }
+
+    function desbloquearSiguiente(semIndex) {
+      if (semIndex + 1 >= semestres.length) return;
+      const siguiente = semestres[semIndex + 1];
+      const inputs = siguiente.querySelectorAll('input[type="checkbox"]');
+      inputs.forEach(i => i.disabled = false);
+    }
+
+    semestres.forEach((sem, index) => {
+      const checks = sem.querySelectorAll('input[type="checkbox"]');
+      checks.forEach(input => {
+        input.addEventListener('change', () => {
+          if (verificarSemestre(index)) {
+            desbloquearSiguiente(index);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
