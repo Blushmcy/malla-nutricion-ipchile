@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Malla Nutrición - IPCHILE</title>
 <style>
+  /* --- Fondo / tipografía --- */
   :root{
     --lila:#8d2bf3;
     --lila-claro: #ecd9ff;
@@ -21,6 +22,7 @@
     position: relative;
     -webkit-font-smoothing:antialiased;
   }
+
   h1{
     text-align:center;
     margin: 0 0 18px 0;
@@ -29,6 +31,8 @@
     letter-spacing: -.2px;
     font-size: 24px;
   }
+
+  /* --- Nutrias decorativas --- */
   .nutria {
     position: absolute;
     font-size: 56px;
@@ -41,6 +45,8 @@
   .nutria.n2 { top: 16px; right: 16px; transform: rotate(8deg); }
   .nutria.n3 { bottom: 18px; left: 26px; transform: rotate(-6deg); }
   .nutria.n4 { bottom: 18px; right: 26px; transform: rotate(6deg); }
+
+  /* --- Grid de niveles --- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -48,6 +54,7 @@
     max-width: 1100px;
     margin: 18px auto 70px auto;
   }
+
   .card {
     background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,255,0.6));
     border-radius: 18px;
@@ -59,9 +66,14 @@
   }
   .card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(150,100,230,0.12); }
   .card h2 { margin: 0 0 8px 0; color: #9d54ff; font-size: 18px; }
+
   ul { list-style: none; padding: 0; margin: 0; display:block; }
   li { margin-bottom: 10px; }
+
+  /* --- Checkbox oculto y label como bloque clickable --- */
   input[type="checkbox"] { display: none; }
+
+  /* label estilo base (bloque clickable que cubre todo el nombre) */
   .ramo-label {
     display: inline-block;
     width: 100%;
@@ -75,7 +87,10 @@
     background: rgba(255,255,255,0.0);
     position: relative;
   }
+
   .ramo-label:hover { transform: translateX(6px); background: rgba(250,230,255,0.7); }
+
+  /* --- Ticket (check) al lado izquierdo --- */
   .ramo-label::before{
     content: "";
     display:inline-block;
@@ -93,6 +108,8 @@
     color: var(--lila);
     transition: all .18s ease;
   }
+
+  /* Cuando está marcado -> ticket aparece y "pop" */
   input[type="checkbox"]:checked + .ramo-label::before{
     content: "✔";
     background: linear-gradient(180deg, #fff, #f6f0ff);
@@ -100,20 +117,26 @@
     transform: scale(1.08);
     box-shadow: 0 6px 18px rgba(140,70,220,0.18);
   }
+
+  /* --- Fondo lila pálido que se mantiene al aprobar (con borde suave y glass) --- */
   input[type="checkbox"]:checked + .ramo-label{
-    background: var(--lila-pale);            
+    background: var(--lila-pale);            /* lila pálido uniforme */
     border-radius: 14px;
     padding: 12px 14px;
     color: var(--lila);
-    box-shadow: 0 8px 24px rgba(160,110,235,0.18); 
-    border: 1px solid rgba(200,170,255,0.55);     
+    box-shadow: 0 8px 24px rgba(160,110,235,0.18); /* glow suave */
+    border: 1px solid rgba(200,170,255,0.55);      /* borde suave */
     transform: scale(1.01);
   }
+
+  /* label cuando el input está disabled (ramo bloqueado) */
   input[type="checkbox"]:disabled + .ramo-label{
     color: #a9a3ab;
     cursor: not-allowed;
     background: rgba(255,255,255,0.35);
   }
+
+  /* --- Animaciones --- */
   @keyframes flotar { 0%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(3deg)}100%{transform:translateY(0)} }
   .nutria { animation: flotar 4.5s ease-in-out infinite; }
   .nutria.n1{ animation-delay: 0s } .nutria.n2{ animation-delay: .8s } .nutria.n3{ animation-delay: 1.6s } .nutria.n4{ animation-delay: 2.4s }
@@ -121,6 +144,7 @@
   @keyframes pop { 0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)} }
   input[type="checkbox"]:checked + .ramo-label::before { animation: pop .32s cubic-bezier(.2,.9,.2,1); }
 
+  /* --- Pequeña marca de agua --- */
   .watermark {
     position: fixed;
     right: 14px;
@@ -133,6 +157,8 @@
     user-select: none;
     letter-spacing: .6px;
   }
+
+  /* --- Responsive tweak --- */
   @media (max-width:520px){
     body { padding: 18px; }
     .nutria { font-size:44px; }
@@ -153,6 +179,9 @@
   <div class="watermark">@blushmcy</div>
 
 <script>
+/* ---------------------------
+   Datos: ramos por nivel (9 niveles)
+   --------------------------- */
 const ramosPorNivel = [
   // Nivel 1
   [
@@ -161,7 +190,7 @@ const ramosPorNivel = [
     "Comunicación Oral y Escrita",
     "Introducción a la Nutrición",
     "Química",
-    "Razonamiento Lógico y Matemático"
+    "Razonamiento Lógico y Matemático",
   ],
   // Nivel 2
   [
@@ -170,7 +199,7 @@ const ramosPorNivel = [
     "Fisiología en el Ciclo Vital",
     "Inglés I",
     "Microbiología e Higiene de los Alimentos",
-    "Primeros Auxilios"
+    "Primeros Auxilios",
   ],
   // Nivel 3
   [
@@ -178,8 +207,8 @@ const ramosPorNivel = [
     "Ciencia de los Alimentos II",
     "Fisiopatología en el Ciclo Vital",
     "Inglés II",
-    "Nutrición Básica I"
-    "Ciencia de los alimentos II"
+    "Nutrición Básica I",
+    "Inocuidad y Calidad alimentaria",
   ],
   // Nivel 4
   [
@@ -187,26 +216,26 @@ const ramosPorNivel = [
     "Evaluación del Estado Nutricional",
     "Farmacología",
     "Nutrición Básica II",
-    "Salud Pública y Epidemiología"
+    "Salud Pública y Epidemiología",
     "Tecnicas Dieteticas",
   ],
   // Nivel 5
   [
-    "Cultura y Gastronómica",
+    "cultura y Gastronómica",
     "Dietetica en el Ciclo Vital ",
     "Psicología para el Ciclo Vital",
+    "Evaluacion Nutricional para el ciclo vital",
     "Produccion y Tecnologia Alimentaria",
-    "Evaluacion Nutricional Para el ciclo vital",
-    "Razonamiento Clinico en nutricion",
+    "Razonamiento Clinico en Nutricion",
   ],
   // Nivel 6
   [
     "Bioética Profesional",
-    "Dietoterapia en el Ciclo Vital II",
-    "Planificacion alimentaria y nutricional",
-    "Genetica y Nutrigenomica",
-    "Educacion, Sociologia Y Conductas",
-    "Nutricion y Actividad Fisica",
+    "Dietoterapia en el Ciclo Vital",
+    "Genetica y nutrigenemia",
+    "Nutricion y Actividad Física",
+    "Planificacion alimentaria y nutricional"
+    "Educacion, Sociologia y Conductas",
   ],
   // Nivel 7
   [
@@ -214,8 +243,8 @@ const ramosPorNivel = [
     "Dietoterapia en el Ciclo Vital II",
     "Evaluación de Proyectos",
     "Nutrición Comunitaria",
-    "Nutricion Ortomolecular",
-    "Nutricion Deportiva",
+    "Nutricion Clinica",
+     "Nutrición Ortomolecular",
   ],
   // Nivel 8
   [
@@ -223,8 +252,8 @@ const ramosPorNivel = [
     "Investigación en Nutrición",
     "Módulo Integrativo en Nutrición Clínica",
     "Módulo Integrativo en Nutrición Comunitaria",
-    "Módulo Integrativo en Servicios de Alimentación",
-    "Terapias complementarias",
+    "Módulo Integrativo en Servicios de Alimentación"
+    "Terapias Complementarias",
   ],
   // Nivel 9
   [
@@ -232,8 +261,10 @@ const ramosPorNivel = [
     "Proyecto de Título",
   ]
 ];
+
 const STORAGE_KEY = "mallaEstado_blushmcy_v1";
 let estado = {}; // mapa id -> boolean
+
 try {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (raw) estado = JSON.parse(raw);
@@ -263,19 +294,15 @@ ramosPorNivel.forEach((ramos, nivelIndex) => {
     label.className = 'ramo-label';
     label.htmlFor = id;
     label.textContent = ramo;
-
     label.tabIndex = 0;
-
     li.appendChild(input);
     li.appendChild(label);
     ul.appendChild(li);
-
     if (estado[id]) {
       input.checked = true;
-      label.classList.add('seleccionado'); 
+      label.classList.add('seleccionado');
     }
   });
-
   card.appendChild(ul);
   mallaDiv.appendChild(card);
 });
@@ -293,7 +320,6 @@ function nivelCompletado(nivelIndex){
   if (checks.length === 0) return false;
   return checks.every(i => i.checked);
 }
-
 function actualizarBloqueosDesdeEstado(){
   for(let i=0;i<ramosPorNivel.length;i++){
     if (i === 0) {
@@ -305,6 +331,7 @@ function actualizarBloqueosDesdeEstado(){
     } else {
       document.querySelectorAll(`[data-semestre="${i+1}"] input[type="checkbox"]`).forEach(inp => {
         inp.disabled = true;
+        // inp.checked = false;
       });
     }
   }
@@ -352,12 +379,6 @@ document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
     }
   });
 });
-guardarEstado();
-document.querySelectorAll('.ramo').forEach(ramo => {
-ramo.addEventListener('click', () => {
-ramo.classList.toggle('seleccionado');
-const check = ramo.querySelector('.check-ramos');
-check.checked = !check.checked;
 guardarEstado();
 </script>
 </body>
