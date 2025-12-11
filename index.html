@@ -156,7 +156,7 @@
 const ramosPorNivel = [
   // Nivel 1
   [
-    "Anatomofisiología",
+    "Anatomorfologia",
     "Biología Celular y Molecular",
     "Comunicación Oral y Escrita",
     "Introducción a la Nutrición",
@@ -179,6 +179,7 @@ const ramosPorNivel = [
     "Fisiopatología en el Ciclo Vital",
     "Inglés II",
     "Nutrición Básica I"
+    "Ciencia de los alimentos II"
   ],
   // Nivel 4
   [
@@ -187,30 +188,34 @@ const ramosPorNivel = [
     "Farmacología",
     "Nutrición Básica II",
     "Salud Pública y Epidemiología"
+    "Tecnicas Dieteticas",
   ],
   // Nivel 5
   [
-    "Estructura y Función Gastronómica",
-    "Dietoterapia en el Ciclo Vital I",
+    "Cultura y Gastronómica",
+    "Dietetica en el Ciclo Vital ",
     "Psicología para el Ciclo Vital",
-    "Educación, Sociología y Conducción",
-    "Higiene y Legislación Sanitaria en Servicios de Alimentación"
+    "Produccion y Tecnologia Alimentaria",
+    "Evaluacion Nutricional Para el ciclo vital",
+    "Razonamiento Clinico en nutricion",
   ],
   // Nivel 6
   [
     "Bioética Profesional",
     "Dietoterapia en el Ciclo Vital II",
-    "Gestión en Nutrición Clínica",
-    "Metabolismo y Actividad Física",
-    "Nutrición Ortomolecular"
+    "Planificacion alimentaria y nutricional",
+    "Genetica y Nutrigenomica",
+    "Educacion, Sociologia Y Conductas",
+    "Nutricion y Actividad Fisica",
   ],
   // Nivel 7
   [
     "Administración y Gestión de Servicios de Alimentación",
-    "Dietoterapia en el Ciclo Vital III",
+    "Dietoterapia en el Ciclo Vital II",
     "Evaluación de Proyectos",
     "Nutrición Comunitaria",
-    "Terapias Complementarias"
+    "Nutricion Ortomolecular",
+    "Nutricion Deportiva",
   ],
   // Nivel 8
   [
@@ -218,12 +223,13 @@ const ramosPorNivel = [
     "Investigación en Nutrición",
     "Módulo Integrativo en Nutrición Clínica",
     "Módulo Integrativo en Nutrición Comunitaria",
-    "Módulo Integrativo en Servicios de Alimentación"
+    "Módulo Integrativo en Servicios de Alimentación",
+    "Terapias complementarias",
   ],
   // Nivel 9
   [
     "Internado Profesional",
-    "Proyecto de Título"
+    "Proyecto de Título",
   ]
 ];
 const STORAGE_KEY = "mallaEstado_blushmcy_v1";
@@ -347,7 +353,23 @@ document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
   });
 });
 guardarEstado();
+});
+</script>
 
+<button id="resetBtn" class="reset">Reset malla</button>
+
+<script>
+document.querySelectorAll('.ramo').forEach(ramo => {
+ramo.addEventListener('click', () => {
+ramo.classList.toggle('seleccionado');
+const check = ramo.querySelector('.check-ramos');
+check.checked = !check.checked;
+  </div>
+
+<div class="watermark">@blushmcy</div>
+</div>
+guardarEstado();
+});
 </script>
 </body>
 </html>
