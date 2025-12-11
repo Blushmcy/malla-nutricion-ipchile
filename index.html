@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Malla Nutrición-IPCHILE</title>
+<title>Malla Nutrición - IPCHILE</title>
 <style>
   :root{
     --lila:#8d2bf3;
@@ -21,6 +21,7 @@
     position: relative;
     -webkit-font-smoothing:antialiased;
   }
+
   h1{
     text-align:center;
     margin: 0 0 18px 0;
@@ -29,6 +30,29 @@
     letter-spacing: -.2px;
     font-size: 24px;
   }
+
+  .reset-btn {
+    display:block;
+    margin: 0 auto 20px auto;
+    padding: 10px 18px;
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,255,0.6));
+    border: 1px solid rgba(200,170,255,0.55);
+    box-shadow: 0 8px 20px rgba(150,100,230,0.12);
+    backdrop-filter: blur(6px);
+    color: var(--lila);
+    font-weight:700;
+    cursor:pointer;
+    transition: all .25s ease;
+  }
+  .reset-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(160,110,235,0.18);
+  }
+  .reset-btn:active{
+    transform: scale(.96);
+  }
+
   .nutria {
     position: absolute;
     font-size: 56px;
@@ -41,6 +65,7 @@
   .nutria.n2 { top: 16px; right: 16px; transform: rotate(8deg); }
   .nutria.n3 { bottom: 18px; left: 26px; transform: rotate(-6deg); }
   .nutria.n4 { bottom: 18px; right: 26px; transform: rotate(6deg); }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -48,6 +73,7 @@
     max-width: 1100px;
     margin: 18px auto 70px auto;
   }
+
   .card {
     background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,255,0.6));
     border-radius: 18px;
@@ -59,9 +85,12 @@
   }
   .card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(150,100,230,0.12); }
   .card h2 { margin: 0 0 8px 0; color: #9d54ff; font-size: 18px; }
+
   ul { list-style: none; padding: 0; margin: 0; display:block; }
   li { margin-bottom: 10px; }
+
   input[type="checkbox"] { display: none; }
+
   .ramo-label {
     display: inline-block;
     width: 100%;
@@ -75,7 +104,9 @@
     background: rgba(255,255,255,0.0);
     position: relative;
   }
+
   .ramo-label:hover { transform: translateX(6px); background: rgba(250,230,255,0.7); }
+
   .ramo-label::before{
     content: "";
     display:inline-block;
@@ -93,6 +124,7 @@
     color: var(--lila);
     transition: all .18s ease;
   }
+
   input[type="checkbox"]:checked + .ramo-label::before{
     content: "✔";
     background: linear-gradient(180deg, #fff, #f6f0ff);
@@ -100,25 +132,39 @@
     transform: scale(1.08);
     box-shadow: 0 6px 18px rgba(140,70,220,0.18);
   }
+
   input[type="checkbox"]:checked + .ramo-label{
-    background: var(--lila-pale);            
+    background: var(--lila-pale);
     border-radius: 14px;
     padding: 12px 14px;
     color: var(--lila);
-    box-shadow: 0 8px 24px rgba(160,110,235,0.18); 
-    border: 1px solid rgba(200,170,255,0.55);     
+    box-shadow: 0 8px 24px rgba(160,110,235,0.18);
+    border: 1px solid rgba(200,170,255,0.55);
     transform: scale(1.01);
   }
+
   input[type="checkbox"]:disabled + .ramo-label{
     color: #a9a3ab;
     cursor: not-allowed;
     background: rgba(255,255,255,0.35);
   }
-  @keyframes flotar { 0%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(3deg)}100%{transform:translateY(0)} }
-  .nutria { animation: flotar 4.5s ease-in-out infinite; }
-  .nutria.n1{ animation-delay: 0s } .nutria.n2{ animation-delay: .8s } .nutria.n3{ animation-delay: 1.6s } .nutria.n4{ animation-delay: 2.4s }
 
-  @keyframes pop { 0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)} }
+  @keyframes flotar { 
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px) rotate(3deg)}
+    100%{transform:translateY(0)}
+  }
+  .nutria { animation: flotar 4.5s ease-in-out infinite; }
+  .nutria.n1{ animation-delay: 0s } 
+  .nutria.n2{ animation-delay: .8s } 
+  .nutria.n3{ animation-delay: 1.6s } 
+  .nutria.n4{ animation-delay: 2.4s }
+
+  @keyframes pop { 
+    0%{transform:scale(1)}
+    40%{transform:scale(1.22)}
+    100%{transform:scale(1)}
+  }
   input[type="checkbox"]:checked + .ramo-label::before { animation: pop .32s cubic-bezier(.2,.9,.2,1); }
 
   .watermark {
@@ -133,147 +179,84 @@
     user-select: none;
     letter-spacing: .6px;
   }
-  @media (max-width:520px){
-    body { padding: 18px; }
-    .nutria { font-size:44px; }
-  }
 </style>
 </head>
 <body>
-  <h1>Malla Curricular — Nutrición y Dietética (IPCHILE)</h1>
 
-  <!-- nutrias decorativas -->
-  <div class="nutria n1">🦦</div>
-  <div class="nutria n2">🦦</div>
-  <div class="nutria n3">🦦</div>
-  <div class="nutria n4">🦦</div>
+<h1>Malla Curricular — Nutrición y Dietética (IPCHILE)</h1>
 
-  <div class="grid" id="malla"></div>
+<button class="reset-btn" id="resetMalla">Reset malla</button>
 
-  <div class="watermark">@blushmcy</div>
+<div class="nutria n1">🦦</div>
+<div class="nutria n2">🦦</div>
+<div class="nutria n3">🦦</div>
+<div class="nutria n4">🦦</div>
+
+<div class="grid" id="malla"></div>
+
+<div class="watermark">@blushmcy</div>
 
 <script>
 const ramosPorNivel = [
-  // Nivel 1
-  [
-    "Anatomorfologia",
-    "Biología Celular y Molecular",
-    "Comunicación Oral y Escrita",
-    "Introducción a la Nutrición",
-    "Química",
-    "Razonamiento Lógico y Matemático",
-  ],
-  // Nivel 2
-  [
-    "Bioquímica",
-    "Ciencia de los Alimentos I",
-    "Fisiología en el Ciclo Vital",
-    "Inglés I",
-    "Microbiología e Higiene de los Alimentos",
-    "Primeros Auxilios",
-  ],
-  // Nivel 3
-  [
-    "Bioestadística",
-    "Ciencia de los Alimentos II",
-    "Fisiopatología en el Ciclo Vital",
-    "Inglés II",
-    "Nutrición Básica I",
-“Inocuidad y Calidad alimentaria”,
-  ],
-  // Nivel 4
-  [
-    "Bromatología y Análisis Sensorial",
-    "Evaluación del Estado Nutricional",
-    "Farmacología",
-    "Nutrición Básica II",
-    "Salud Pública y Epidemiología",
-“Tecnicas Dieteticas”,
-  ],
-  // Nivel 5
-  [
-    "Estructura y Función Gastronómica",
-    "Dietoterapia en el Ciclo Vital I",
-    "Psicología para el Ciclo Vital",
-    "Educación, Sociología y Conducción",
-    "Higiene y Legislación Sanitaria en Servicios de Alimentación"
-  ],
-  // Nivel 6
-  [
-"Bioética Profesional",
-    "Dietoterapia en el Ciclo Vital II",
-    "Gestión en Nutrición Clínica",
-    "Metabolismo y Actividad Física",
-    "Nutrición Ortomolecular"
-  ],
-  // Nivel 7
-  [
-"Administración y Gestión de Servicios de Alimentación",
-    "Dietoterapia en el Ciclo Vital III",
-    "Evaluación de Proyectos",
-    "Nutrición Comunitaria",
-    "Terapias Complementarias"
-  ],
-  // Nivel 8
-  [
-    "Evaluación de Proyectos y Planificación",
-    "Investigación en Nutrición",
-    "Módulo Integrativo en Nutrición Clínica",
-    "Módulo Integrativo en Nutrición Comunitaria",
-    "Módulo Integrativo en Servicios de Alimentación"
-  ],
-  // Nivel 9
-  [
-    "Internado Profesional",
-    "Proyecto de Título",
-  ]
+  ["Anatomorfologia","Biología Celular y Molecular","Comunicación Oral y Escrita","Introducción a la Nutrición","Química","Razonamiento Lógico y Matemático"],
+  ["Bioquímica","Ciencia de los Alimentos I","Fisiología en el Ciclo Vital","Inglés I","Microbiología e Higiene de los Alimentos","Primeros Auxilios","Inocuidad y calidad alimentaria"],
+  ["Bioestadística","Ciencia de los Alimentos II","Fisiopatología en el Ciclo Vital","Inglés II","Nutrición Básica I"],
+  ["Bromatología y Análisis Sensorial","Evaluación del Estado Nutricional","Farmacología","Nutrición Básica II","Salud Pública y Epidemiología","Tecnicas Dieteticas","razonamiento clinico nutricional"],
+  ["cultura y Gastronómica","Dietetica en el Ciclo Vital ","Psicología para el Ciclo Vital","Produccion y Tecnologia Alimentaria","planificacion alimentaria y nutricional"],
+  ["Bioética Profesional","Dietoterapia en el Ciclo Vital I","Gestión en Nutrición Clínica","nutricion y Actividad Física","Nutrición Ortomolecular"],
+  ["Administración y Gestión de Servicios de Alimentación","Dietoterapia en el Ciclo Vital III","Evaluación de Proyectos","Nutrición Comunitaria","Terapias Complementarias"],
+  ["Evaluación de Proyectos y Planificación","Investigación en Nutrición","Módulo Integrativo en Nutrición Clínica","Módulo Integrativo en Nutrición Comunitaria","Módulo Integrativo en Servicios de Alimentación"],
+  ["Internado Profesional","Proyecto de Título"]
 ];
+
 const STORAGE_KEY = "mallaEstado_blushmcy_v1";
-let estado = {}; // mapa id -> boolean
-try {
+let estado = {};
+
+try{
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (raw) estado = JSON.parse(raw);
-} catch(e){ estado = {}; }
+  if(raw) estado = JSON.parse(raw);
+}catch(e){ estado = {}; }
 
-const mallaDiv = document.getElementById('malla');
+const mallaDiv = document.getElementById("malla");
 
-ramosPorNivel.forEach((ramos, nivelIndex) => {
-  const card = document.createElement('div');
-  card.className = 'card';
+ramosPorNivel.forEach((ramos, nivelIndex)=>{
+  const card = document.createElement("div");
+  card.className = "card";
   card.dataset.semestre = nivelIndex + 1;
 
-  const title = document.createElement('h2');
-  title.textContent = `Nivel ${nivelIndex + 1}`;
+  const title = document.createElement("h2");
+  title.textContent = `Nivel ${nivelIndex+1}`;
   card.appendChild(title);
 
-  const ul = document.createElement('ul');
+  const ul = document.createElement("ul");
 
-  ramos.forEach((ramo, rIndex) => {
-    const li = document.createElement('li');
-    const input = document.createElement('input');
+  ramos.forEach((ramo, rIndex)=>{
+    const li = document.createElement("li");
+
+    const input = document.createElement("input");
     const id = `s${nivelIndex+1}r${rIndex+1}`;
-    input.type = 'checkbox';
+    input.type = "checkbox";
     input.id = id;
 
-    const label = document.createElement('label');
-    label.className = 'ramo-label';
+    const label = document.createElement("label");
+    label.className = "ramo-label";
     label.htmlFor = id;
     label.textContent = ramo;
-
     label.tabIndex = 0;
+
     li.appendChild(input);
     li.appendChild(label);
     ul.appendChild(li);
 
-    if (estado[id]) {
+    if(estado[id]){
       input.checked = true;
-      label.classList.add('seleccionado'); 
     }
   });
 
   card.appendChild(ul);
   mallaDiv.appendChild(card);
 });
+
 function guardarEstado(){
   const map = {};
   document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
@@ -282,70 +265,42 @@ function guardarEstado(){
   estado = map;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
 }
+
 function nivelCompletado(nivelIndex){
-  const selector = `[data-semestre="${nivelIndex+1}"] input[type="checkbox"]`;
-  const checks = Array.from(document.querySelectorAll(selector));
-  if (checks.length === 0) return false;
-  return checks.every(i => i.checked);
+  const checks = [...document.querySelectorAll(`[data-semestre="${nivelIndex+1}"] input[type="checkbox"]`)];
+  return checks.length > 0 && checks.every(i => i.checked);
 }
+
 function actualizarBloqueosDesdeEstado(){
   for(let i=0;i<ramosPorNivel.length;i++){
-    if (i === 0) {
-      document.querySelectorAll(`[data-semestre="${i+1}"] input[type="checkbox"]`).forEach(inp => inp.disabled = false);
+    const inputs = document.querySelectorAll(`[data-semestre="${i+1}"] input[type="checkbox"]`);
+
+    if(i === 0){
+      inputs.forEach(inp => inp.disabled = false);
       continue;
     }
-    if (nivelCompletado(i-1)){
-      document.querySelectorAll(`[data-semestre="${i+1}"] input[type="checkbox"]`).forEach(inp => inp.disabled = false);
+
+    if(nivelCompletado(i-1)){
+      inputs.forEach(inp => inp.disabled = false);
     } else {
-      document.querySelectorAll(`[data-semestre="${i+1}"] input[type="checkbox"]`).forEach(inp => {
-        inp.disabled = true;
-      });
+      inputs.forEach(inp => inp.disabled = true);
     }
   }
 }
-mallaDiv.addEventListener('click', (e) => {
-});
-mallaDiv.addEventListener('change', (e) => {
-  const target = e.target;
-  if (target && target.matches('input[type="checkbox"]')) {
-    const label = target.nextElementSibling;
-    if (target.checked) {
-      label.classList.add('seleccionado');
-    } else {
-      label.classList.remove('seleccionado');
-    }
+
+document.querySelectorAll('input[type="checkbox"]').forEach(inp=>{
+  inp.addEventListener("change", ()=>{
     guardarEstado();
-    const nivelIndex = parseInt(target.id.match(/^s(\d+)r/)[1],10) - 1;
-    if (nivelCompletado(nivelIndex)){
-      if (document.querySelector(`[data-semestre="${nivelIndex+2}"]`)) {
-        document.querySelectorAll(`[data-semestre="${nivelIndex+2}"] input[type="checkbox"]`).forEach(inp => inp.disabled = false);
-      }
-    } else {
-      for(let j = nivelIndex+1; j < ramosPorNivel.length; j++){
-        document.querySelectorAll(`[data-semestre="${j+1}"] input[type="checkbox"]`).forEach(inp=>{
-          inp.disabled = true;
-        });
-      }
-    }
-  }
-});
-actualizarBloqueosDesdeEstado();
-document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
-  const lbl = i.nextElementSibling;
-  if (!lbl) return;
-  if (i.checked) lbl.classList.add('seleccionado');
-  else lbl.classList.remove('seleccionado');
-  lbl.addEventListener('keydown', (ev)=>{
-    if (ev.key === 'Enter' || ev.key === ' ') {
-      ev.preventDefault();
-      if (!i.disabled) {
-        i.checked = !i.checked;
-        i.dispatchEvent(new Event('change', { bubbles:true }));
-      }
-    }
+    actualizarBloqueosDesdeEstado();
   });
 });
-guardarEstado();
+
+actualizarBloqueosDesdeEstado();
+document.getElementById("resetMalla").addEventListener("click", ()=>{
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+});
 </script>
+
 </body>
-</html> 
+</html>
