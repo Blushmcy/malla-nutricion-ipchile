@@ -353,21 +353,11 @@ document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
   });
 });
 guardarEstado();
-});
-</script>
-
-<button id="resetBtn" class="reset">Reset malla</button>
-
-<script>
 document.querySelectorAll('.ramo').forEach(ramo => {
 ramo.addEventListener('click', () => {
 ramo.classList.toggle('seleccionado');
 const check = ramo.querySelector('.check-ramos');
 check.checked = !check.checked;
-  </div>
-
-<div class="watermark">@blushmcy</div>
-</div>
 guardarEstado();
 });
 </script>
