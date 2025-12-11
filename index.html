@@ -21,7 +21,6 @@
     position: relative;
     -webkit-font-smoothing:antialiased;
   }
-
   h1{
     text-align:center;
     margin: 0 0 18px 0;
@@ -154,7 +153,7 @@
 
 <script>
 const ramosPorNivel = [
-  // Nivel 1
+  // Nivel 1,
   [
     "Anatomorfologia",
     "Biología Celular y Molecular",
@@ -163,7 +162,7 @@ const ramosPorNivel = [
     "Química",
     "Razonamiento Lógico y Matemático",
   ],
-  // Nivel 2
+  // Nivel 2,
   [
     "Bioquímica",
     "Ciencia de los Alimentos I",
@@ -172,7 +171,7 @@ const ramosPorNivel = [
     "Microbiología e Higiene de los Alimentos",
     "Primeros Auxilios",
   ],
-  // Nivel 3
+  // Nivel 3,
   [
     "Bioestadística",
     "Ciencia de los Alimentos II",
@@ -181,7 +180,7 @@ const ramosPorNivel = [
     "Nutrición Básica I",
     "Inocuidad y Calidad alimentaria",
   ],
-  // Nivel 4
+  // Nivel 4,
   [
     "Bromatología y Análisis Sensorial",
     "Evaluación del Estado Nutricional",
@@ -190,7 +189,7 @@ const ramosPorNivel = [
     "Salud Pública y Epidemiología",
     "Tecnicas Dieteticas",
   ],
-  // Nivel 5
+  // Nivel 5,
   [
     "cultura y Gastronómica",
     "Dietetica en el Ciclo Vital ",
@@ -199,7 +198,7 @@ const ramosPorNivel = [
     "Produccion y Tecnologia Alimentaria",
     "Razonamiento Clinico en Nutricion",
   ],
-  // Nivel 6
+  // Nivel 6,
   [
     "Bioética Profesional",
     "Dietoterapia en el Ciclo Vital",
@@ -208,7 +207,7 @@ const ramosPorNivel = [
     "Planificacion alimentaria y nutricional"
     "Educacion, Sociologia y Conductas",
   ],
-  // Nivel 7
+  // Nivel 7,
   [
     "Administración y Gestión de Servicios de Alimentación",
     "Dietoterapia en el Ciclo Vital II",
@@ -217,7 +216,7 @@ const ramosPorNivel = [
     "Nutricion Clinica",
      "Nutrición Ortomolecular",
   ],
-  // Nivel 8
+  // Nivel 8,
   [
     "Evaluación de Proyectos y Planificación",
     "Investigación en Nutrición",
@@ -226,41 +225,33 @@ const ramosPorNivel = [
     "Módulo Integrativo en Servicios de Alimentación"
     "Terapias Complementarias",
   ],
-  // Nivel 9
+  // Nivel 9,
   [
     "Internado Profesional",
     "Proyecto de Título",
   ]
 ];
-
 const STORAGE_KEY = "mallaEstado_blushmcy_v1";
 let estado = {}; // mapa id -> boolean
-
 try {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (raw) estado = JSON.parse(raw);
 } catch(e){ estado = {}; }
-
 const mallaDiv = document.getElementById('malla');
-
 ramosPorNivel.forEach((ramos, nivelIndex) => {
   const card = document.createElement('div');
   card.className = 'card';
   card.dataset.semestre = nivelIndex + 1;
-
   const title = document.createElement('h2');
   title.textContent = `Nivel ${nivelIndex + 1}`;
   card.appendChild(title);
-
   const ul = document.createElement('ul');
-
   ramos.forEach((ramo, rIndex) => {
     const li = document.createElement('li');
     const input = document.createElement('input');
     const id = `s${nivelIndex+1}r${rIndex+1}`;
     input.type = 'checkbox';
     input.id = id;
-
     const label = document.createElement('label');
     label.className = 'ramo-label';
     label.htmlFor = id;
@@ -309,7 +300,6 @@ function actualizarBloqueosDesdeEstado(){
 }
 mallaDiv.addEventListener('click', (e) => {
 });
-
 mallaDiv.addEventListener('change', (e) => {
   const target = e.target;
   if (target && target.matches('input[type="checkbox"]')) {
