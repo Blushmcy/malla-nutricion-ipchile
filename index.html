@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Malla Nutrición - IPCHILE</title>
+<title>Malla Nutrición-IPCHILE</title>
 <style>
   :root{
     --lila:#8d2bf3;
@@ -261,7 +261,6 @@ ramosPorNivel.forEach((ramos, nivelIndex) => {
     label.textContent = ramo;
 
     label.tabIndex = 0;
-
     li.appendChild(input);
     li.appendChild(label);
     ul.appendChild(li);
@@ -289,7 +288,6 @@ function nivelCompletado(nivelIndex){
   if (checks.length === 0) return false;
   return checks.every(i => i.checked);
 }
-
 function actualizarBloqueosDesdeEstado(){
   for(let i=0;i<ramosPorNivel.length;i++){
     if (i === 0) {
@@ -307,7 +305,6 @@ function actualizarBloqueosDesdeEstado(){
 }
 mallaDiv.addEventListener('click', (e) => {
 });
-
 mallaDiv.addEventListener('change', (e) => {
   const target = e.target;
   if (target && target.matches('input[type="checkbox"]')) {
@@ -351,4 +348,4 @@ document.querySelectorAll('input[type="checkbox"]').forEach(i=>{
 guardarEstado();
 </script>
 </body>
-</html>  ],
+</html> 
