@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Malla Nutrición - IPCHILE</title>
 <style>
-  /* --- Fondo / tipografía --- */
   :root{
     --lila:#8d2bf3;
     --lila-claro: #ecd9ff;
@@ -31,8 +30,6 @@
     letter-spacing: -.2px;
     font-size: 24px;
   }
-
-  /* --- Nutrias decorativas --- */
   .nutria {
     position: absolute;
     font-size: 56px;
@@ -45,8 +42,6 @@
   .nutria.n2 { top: 16px; right: 16px; transform: rotate(8deg); }
   .nutria.n3 { bottom: 18px; left: 26px; transform: rotate(-6deg); }
   .nutria.n4 { bottom: 18px; right: 26px; transform: rotate(6deg); }
-
-  /* --- Grid de niveles --- */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -54,7 +49,6 @@
     max-width: 1100px;
     margin: 18px auto 70px auto;
   }
-
   .card {
     background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,255,0.6));
     border-radius: 18px;
@@ -66,14 +60,9 @@
   }
   .card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(150,100,230,0.12); }
   .card h2 { margin: 0 0 8px 0; color: #9d54ff; font-size: 18px; }
-
   ul { list-style: none; padding: 0; margin: 0; display:block; }
   li { margin-bottom: 10px; }
-
-  /* --- Checkbox oculto y label como bloque clickable --- */
   input[type="checkbox"] { display: none; }
-
-  /* label estilo base (bloque clickable que cubre todo el nombre) */
   .ramo-label {
     display: inline-block;
     width: 100%;
@@ -87,10 +76,7 @@
     background: rgba(255,255,255,0.0);
     position: relative;
   }
-
   .ramo-label:hover { transform: translateX(6px); background: rgba(250,230,255,0.7); }
-
-  /* --- Ticket (check) al lado izquierdo --- */
   .ramo-label::before{
     content: "";
     display:inline-block;
@@ -108,8 +94,6 @@
     color: var(--lila);
     transition: all .18s ease;
   }
-
-  /* Cuando está marcado -> ticket aparece y "pop" */
   input[type="checkbox"]:checked + .ramo-label::before{
     content: "✔";
     background: linear-gradient(180deg, #fff, #f6f0ff);
@@ -117,34 +101,26 @@
     transform: scale(1.08);
     box-shadow: 0 6px 18px rgba(140,70,220,0.18);
   }
-
-  /* --- Fondo lila pálido que se mantiene al aprobar (con borde suave y glass) --- */
   input[type="checkbox"]:checked + .ramo-label{
-    background: var(--lila-pale);            /* lila pálido uniforme */
+    background: var(--lila-pale);           
     border-radius: 14px;
     padding: 12px 14px;
     color: var(--lila);
-    box-shadow: 0 8px 24px rgba(160,110,235,0.18); /* glow suave */
-    border: 1px solid rgba(200,170,255,0.55);      /* borde suave */
+    box-shadow: 0 8px 24px rgba(160,110,235,0.18);
+    border: 1px solid rgba(200,170,255,0.55);     
     transform: scale(1.01);
   }
-
-  /* label cuando el input está disabled (ramo bloqueado) */
   input[type="checkbox"]:disabled + .ramo-label{
     color: #a9a3ab;
     cursor: not-allowed;
     background: rgba(255,255,255,0.35);
   }
-
-  /* --- Animaciones --- */
   @keyframes flotar { 0%{transform:translateY(0)}50%{transform:translateY(-8px) rotate(3deg)}100%{transform:translateY(0)} }
   .nutria { animation: flotar 4.5s ease-in-out infinite; }
   .nutria.n1{ animation-delay: 0s } .nutria.n2{ animation-delay: .8s } .nutria.n3{ animation-delay: 1.6s } .nutria.n4{ animation-delay: 2.4s }
 
   @keyframes pop { 0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)} }
   input[type="checkbox"]:checked + .ramo-label::before { animation: pop .32s cubic-bezier(.2,.9,.2,1); }
-
-  /* --- Pequeña marca de agua --- */
   .watermark {
     position: fixed;
     right: 14px;
@@ -157,8 +133,6 @@
     user-select: none;
     letter-spacing: .6px;
   }
-
-  /* --- Responsive tweak --- */
   @media (max-width:520px){
     body { padding: 18px; }
     .nutria { font-size:44px; }
@@ -179,9 +153,6 @@
   <div class="watermark">@blushmcy</div>
 
 <script>
-/* ---------------------------
-   Datos: ramos por nivel (9 niveles)
-   --------------------------- */
 const ramosPorNivel = [
   // Nivel 1
   [
