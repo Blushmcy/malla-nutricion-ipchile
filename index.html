@@ -1,295 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Curricular Nutrición y Dietética - IPCHILE</title>
-  <style>
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ffe6f7, #e8d9ff);
-    color: #333;
-    margin: 0;
-    padding: 20px;
-    position: relative;
-  }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Malla Nutrición</title>
+<style>
+    body {
+        background: linear-gradient(135deg, #f8dfff, #e4d4ff);
+        font-family: "Poppins", sans-serif;
+        padding: 30px;
+    }
 
-  /* Nutria decoraciones */
-  .nutria {
-    position: absolute;
-    font-size: 48px;
-    opacity: 0.35;
-    user-select: none;
-  }
-  .nutria.n1 { top: 20px; left: 20px; }
-  .nutria.n2 { top: 20px; right: 20px; }
-  .nutria.n3 { bottom: 20px; left: 20px; }
-  .nutria.n4 { bottom: 20px; right: 20px; }
+    .contenedor-malla {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #d57bff;
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+    .ramo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        border-radius: 18px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        transition: 0.25s ease;
+        cursor: pointer;
+        font-size: 17px;
+        color: #4b2e63;
+        font-weight: 600;
+    }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
+    .ramo:hover {
+        transform: scale(1.01);
+    }
 
-  .card {
-    background: #fff0f9;
-    border: 2px solid #f3c7ff;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 4px 14px rgba(180, 120, 255, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+    .ramo.seleccionado {
+        background: rgba(234, 214, 255, 0.55);
+        border: 1px solid rgba(210, 172, 255, 0.7);
+        box-shadow: 0 6px 18px rgba(180, 120, 255, 0.35);
+        transform: scale(1.02);
+    }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 7px 18px rgba(180, 120, 255, 0.35);
-  }
+    .check-ramos {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
 
-  .card h2 {
-    font-size: 19px;
-    margin-bottom: 10px;
-    color: #c05bff;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 10px;
-    transition: background 0.2s ease;
-  }
-
-  li:hover {
-    background: #f7d8ff;
-  }
-
-  /* Ocultar checkbox nativo */
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  /* Estilo del nombre del ramo */
-  label {
-    margin-left: 6px;
-    cursor: pointer;
-    position: relative;
-    padding-left: 25px;
-  }
-
-  /* Ticket cuando esté aprobado */
-  input[type="checkbox"]:checked + label::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #b84bff;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  /* Ramo aprobado estilo */
-  input[type="checkbox"]:checked + label {
-    color: #8d2bf3;
-    font-weight: 600;
-    background: #f0e3ff; /* lila muy pálido */
-    padding: 6px 8px;
-    border-radius: 10px;
-  }
-
-  /* Deshabilitados */
-  input[type="checkbox"]:disabled + label {
-    color: #aaa;
-  }
-  /* Animación general suave */
-  * {
-    transition: all 0.25s ease-out;
-  }
-
-  /* Animación de flotación para las nutrias */
-  @keyframes flotar {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(3deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-  }
-
-  .nutria {
-    animation: flotar 4s ease-in-out infinite;
-  }
-
-  .nutria.n1 { animation-delay: 0s; }
-  .nutria.n2 { animation-delay: 1s; }
-  .nutria.n3 { animation-delay: 2s; }
-  .nutria.n4 { animation-delay: 3s; }
-
-  /* Animación de "pop" al marcar un ramo */
-  @keyframes pop {
-    0% { transform: scale(1); }
-    40% { transform: scale(1.25); }
-    100% { transform: scale(1); }
-  }
-
-  input[type="checkbox"]:checked + label::before {
-    animation: pop 0.3s ease-out;
-  }
-
-  /* Animación hover más cute */
-  li:hover {
-    background: #f2cfff;
-    transform: translateX(4px);
-  }
+    .watermark {
+        position: absolute;
+        bottom: -25px;
+        right: 10px;
+        font-size: 12px;
+        opacity: 0.3;
+        font-weight: 500;
+        color: #b68bff;
+        user-select: none;
+    }
 </style>
 </head>
 <body>
-  <div class="nutria n1">🦦</div>
-  <div class="nutria n2">🦦</div>
-  <div class="nutria n3">🦦</div>
-  <div class="nutria n4">🦦</div>
-  <h1>Malla Curricular Nutrición y Dietética - IPCHILE</h1>
-  <div class="grid" id="malla">
-    <!-- Las tarjetas de cada semestre se generarán aquí -->
-  </div>
 
-  <script>
-    const ramosPorNivel = [
-      [
-        "Anatomofisiología",
-        "Biología Celular y Molecular",
-        "Comunicación Oral y Escrita",
-        "Introducción a la Nutrición",
-        "Química",
-        "Razonamiento Lógico y Matemático"
-      ],
-      [
-        "Bioquímica",
-        "Ciencia de los Alimentos I",
-        "Fisiología en el Ciclo Vital",
-        "Inglés I",
-        "Microbiología e Higiene de los Alimentos",
-        "Primeros Auxilios"
-      ],
-      [
-        "Bioestadística",
-        "Ciencia de los Alimentos II",
-        "Fisiopatología en el Ciclo Vital",
-        "Inglés II",
-        "Nutrición Básica I"
-      ],
-      [
-        "Bromatología y Análisis Sensorial",
-        "Evaluación del Estado Nutricional",
-        "Farmacología",
-        "Nutrición Básica II",
-        "Salud Pública y Epidemiología"
-      ],
-      [
-        "Estructura y Función Gastronómica",
-        "Dietoterapia en el Ciclo Vital I",
-        "Psicología para el Ciclo Vital",
-        "Educación, Sociología y Conducción",
-        "Higiene y Legislación Sanitaria en Servicios de Alimentación"
-      ],
-      [
-        "Bioética Profesional",
-        "Dietoterapia en el Ciclo Vital II",
-        "Gestión en Nutrición Clínica",
-        "Metabolismo y Actividad Física",
-        "Nutrición Ortomolecular"
-      ],
-      [
-        "Administración y Gestión de Servicios de Alimentación",
-        "Dietoterapia en el Ciclo Vital III",
-        "Evaluación de Proyectos",
-        "Nutrición Comunitaria",
-        "Terapias Complementarias"
-      ],
-      [
-        "Evaluación de Proyectos y Planificación",
-        "Investigación en Nutrición",
-        "Módulo Integrativo en Nutrición Clínica",
-        "Módulo Integrativo en Nutrición Comunitaria",
-        "Módulo Integrativo en Servicios de Alimentación"
-      ],
-      [
-        "Internado Profesional",
-        "Proyecto de Título"
-      ]
-    ];
+<div class="contenedor-malla">
+    <div class="ramo">
+        <span>Fisiopatología</span>
+        <input type="checkbox" class="check-ramos">
+    </div>
 
-    const mallaDiv = document.getElementById("malla");
+    <div class="ramo">
+        <span>Bioestadística</span>
+        <input type="checkbox" class="check-ramos">
+    </div>
 
-    ramosPorNivel.forEach((ramos, index) => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.dataset.semestre = index + 1;
+    <div class="ramo">
+        <span>Bromatología</span>
+        <input type="checkbox" class="check-ramos">
+    </div>
 
-      const title = document.createElement("h2");
-      title.textContent = `Nivel ${index + 1}`;
-      card.appendChild(title);
+    <div class="ramo">
+        <span>Evaluación Nutricional</span>
+        <input type="checkbox" class="check-ramos">
+    </div>
 
-      const ul = document.createElement("ul");
+    <div class="ramo">
+        <span>Microbiología de Alimentos</span>
+        <input type="checkbox" class="check-ramos">
+    </div>
 
-      ramos.forEach((ramo, i) => {
-        const li = document.createElement("li");
-        const inputId = `s${index + 1}r${i + 1}`;
+    <div class="watermark">@blushmcy</div>
+</div>
 
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.id = inputId;
-        if (index > 0) input.disabled = true;
-
-        const label = document.createElement("label");
-        label.setAttribute("for", inputId);
-        label.className = "custom-checkbox";
-        label.textContent = ramo;
-
-        li.appendChild(input);
-        li.appendChild(label);
-        ul.appendChild(li);
-      });
-
-      card.appendChild(ul);
-      mallaDiv.appendChild(card);
-    });
-
-    const semestres = document.querySelectorAll('[data-semestre]');
-
-    function verificarSemestre(semIndex) {
-      const semestre = semestres[semIndex];
-      const checks = semestre.querySelectorAll('input[type="checkbox"]');
-      return Array.from(checks).every(input => input.checked);
-    }
-
-    function desbloquearSiguiente(semIndex) {
-      if (semIndex + 1 >= semestres.length) return;
-      const siguiente = semestres[semIndex + 1];
-      const inputs = siguiente.querySelectorAll('input[type="checkbox"]');
-      inputs.forEach(i => i.disabled = false);
-    }
-
-    semestres.forEach((sem, index) => {
-      const checks = sem.querySelectorAll('input[type="checkbox"]');
-      checks.forEach(input => {
-        input.addEventListener('change', () => {
-          if (verificarSemestre(index)) {
-            desbloquearSiguiente(index);
-          }
+<script>
+    document.querySelectorAll('.ramo').forEach(ramo => {
+        ramo.addEventListener('click', () => {
+            ramo.classList.toggle('seleccionado');
+            const check = ramo.querySelector('.check-ramos');
+            check.checked = !check.checked;
         });
-      });
     });
-  </script>
+</script>
+
 </body>
 </html>
